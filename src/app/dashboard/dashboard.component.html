@@ -1,0 +1,40 @@
+<!--<div class="starter-template">
+    <h1>Dashboard</h1>
+</div>-->
+
+<div class="row">
+  <div class="col-xs">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          Workout Types
+          <a href="#" class="btn btn-outline-primary float-xs-right">Add</a>
+        </h2>
+      </div>
+      <div class="card-block">
+        <div class="list-group">
+          <a *ngFor="let workoutType of workoutTypes | async" href="#" class="list-group-item list-group-item-action">
+            {{workoutType.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">
+          Exercise Defaults
+          <a href="#" class="btn btn-outline-primary float-xs-right">Add</a>
+        </h2>
+      </div>
+      <div class="card-block">
+        <div class="list-group">
+          <a *ngFor="let exercise of exerciseDefaults | async" href="#" class="list-group-item list-group-item-action">
+            {{exercise.name}}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
