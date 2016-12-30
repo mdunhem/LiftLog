@@ -1,13 +1,15 @@
 {
   "name": "lift-log",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
     "lint": "tslint \"src/**/*.ts\"",
-    "test": "ng test",
+    "test": "ng test --single-run --browsers Firefox",
+    "test:watch": "ng test",
+    "travis": "npm run test --silent",
     "pree2e": "webdriver-manager update --standalone false --gecko false",
     "e2e": "protractor",
     "postinstall": "ng build --aot -prod"
@@ -42,6 +44,7 @@
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",
     "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
     "karma-cli": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "karma-remap-istanbul": "^0.2.1",

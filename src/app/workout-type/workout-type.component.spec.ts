@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { WorkoutTypeComponent } from './workout-type.component';
+import { RouterOutletStubComponent } from '../../testing';
 
 describe('WorkoutTypeComponent', () => {
   let component: WorkoutTypeComponent;
@@ -11,7 +12,7 @@ describe('WorkoutTypeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ WorkoutTypeComponent ]
+      declarations: [ WorkoutTypeComponent, RouterOutletStubComponent ]
     })
     .compileComponents();
   }));

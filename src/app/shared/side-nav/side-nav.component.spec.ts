@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { SideNavComponent } from './side-nav.component';
+import { RouterLinkStubDirective } from '../../../testing';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -11,7 +12,7 @@ describe('SideNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SideNavComponent ]
+      declarations: [ SideNavComponent, RouterLinkStubDirective ]
     })
     .compileComponents();
   }));

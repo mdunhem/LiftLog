@@ -1,0 +1,35 @@
+language: node_js
+sudo: false
+node_js:
+- node
+addons:
+  firefox: latest
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+cache:
+  directories:
+  - node_modules
+env:
+- CXX=g++-4.8
+install:
+- npm install
+before_script:
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+script:
+- npm run test --silent
+notifications:
+  webhooks:
+    on_success: always
+    on_failure: always
+    on_start: false
+
+deploy:
+  api_key:
+    secure: HD5z+dNIEzRA5cvMyn/sd1C3s4GyKw13Hh5EEFSc0iVRyrZju+/KEWekhFDwRFJP3Gwnvs+8D8oOw6CThMVTC4ltdp07QGEUdkycBIfbvNNjPfVjaLNs+p7xPjuMumPzCiy6V5jl5EOoFWB+yGgTk3zYe7qlHAWjHCm7tBxOm668HfY2xT/W7l9rIkcIA6E+APQhLGLtJ95fzrPBKcrnB0ONQNK5vNoXEf1RkxwbGqv5iQHOAGvgKyqEHciORsZ3PdlQmR36yj6eivYIeu5HpElDYt3S8zi1sVai8i2hhp9uhXXS86nB8AvP1RX3OZfUSqmghnNDkPy9yUxckMjco9fd+15rJmtWJxd+WiqVtX2OMeRV716ilLo5lXbAinOzgsy31CCjOW8DIxu7bivJi0CTJTwoHucMMYwR/F/TjdNn0bEX1WPznPStrtLMI42JWDeecw2RQzpQ9EEBRj2W/B2hUKXW0eLc2BMKfJDvDAk0F/bEU7uUtpqETAUdxHyub/xOL5SvsefL1FkLglZNxLwOOPvBRxmW6LntZnkHNmdzGeRqlAXa5DAMeK7ke+0kZ4HwU6Ift5GjjaEJ+znbAMhntredWyWT97lv3bmaZGnWTLSb4xTCPMNW6kqXFZrjpfYGPr8/4jmjUy6ggw6/52lVy1q3wCN3D5EO9QpdBP8=
+    app: arcane-headland-21979
+    on:
+      branch: master
