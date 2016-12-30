@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 node_js:
-- '6'
+- 'node'
 
 addons:
   firefox: latest
@@ -26,7 +26,7 @@ before_script:
     - sh -e /etc/init.d/xvfb start
 
 script:
-    - npm run travis
+    - npm run test --silent
 #   - ./node_modules/.bin/karma start --single-run --browsers Firefox --reporters mocha
   # Make sure the build that ships to npm builds without errors
   # Run integration test to make sure our typings are correct for user-land.
