@@ -4,19 +4,17 @@ import { LayoutModule } from './layout/layout.module';
 
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { DrawerComponent } from './drawer/drawer.component';
-import { TableComponent } from './table/table.component';
 
 @NgModule({
   imports: [
     CommonModule,
     LayoutModule
   ],
-  declarations: [ToolbarComponent, DrawerComponent, TableComponent],
+  declarations: [ToolbarComponent, DrawerComponent],
   exports: [
     LayoutModule,
     ToolbarComponent,
-    DrawerComponent,
-    TableComponent
+    DrawerComponent
   ]
 })
 export class WidgetsModule { }
