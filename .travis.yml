@@ -19,6 +19,12 @@ install:
 before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+
+branches:
+  only:
+  - master
+  - develop
+
 script:
 - npm run test --silent
 notifications:
@@ -30,7 +36,7 @@ notifications:
 deploy:
   provider: heroku
   api_key:
-    secure: HD5z+dNIEzRA5cvMyn/sd1C3s4GyKw13Hh5EEFSc0iVRyrZju+/KEWekhFDwRFJP3Gwnvs+8D8oOw6CThMVTC4ltdp07QGEUdkycBIfbvNNjPfVjaLNs+p7xPjuMumPzCiy6V5jl5EOoFWB+yGgTk3zYe7qlHAWjHCm7tBxOm668HfY2xT/W7l9rIkcIA6E+APQhLGLtJ95fzrPBKcrnB0ONQNK5vNoXEf1RkxwbGqv5iQHOAGvgKyqEHciORsZ3PdlQmR36yj6eivYIeu5HpElDYt3S8zi1sVai8i2hhp9uhXXS86nB8AvP1RX3OZfUSqmghnNDkPy9yUxckMjco9fd+15rJmtWJxd+WiqVtX2OMeRV716ilLo5lXbAinOzgsy31CCjOW8DIxu7bivJi0CTJTwoHucMMYwR/F/TjdNn0bEX1WPznPStrtLMI42JWDeecw2RQzpQ9EEBRj2W/B2hUKXW0eLc2BMKfJDvDAk0F/bEU7uUtpqETAUdxHyub/xOL5SvsefL1FkLglZNxLwOOPvBRxmW6LntZnkHNmdzGeRqlAXa5DAMeK7ke+0kZ4HwU6Ift5GjjaEJ+znbAMhntredWyWT97lv3bmaZGnWTLSb4xTCPMNW6kqXFZrjpfYGPr8/4jmjUy6ggw6/52lVy1q3wCN3D5EO9QpdBP8=
+    secure: "Vgw4sjM7Y99y7Eeb2y7V3ZXQgmRzGN8Hr2dXXUJNVXKJFcbiZJuXpiloMzGZ+L1ZOqi8qF4qPCmi9lPCnT6XUgjBDi6SeKQbNBUfiBmH7w39KzeC4ZYqU/dvzIZmMFwfrjlKhMZ6feJZ4ND1dzQQXD2Wh649TJdzjy39GbVfsCX798xVGHfRK37pd8W/4Vd5tJFgYYUeYbvRuQ8duiPf6rbQ/vJL01MOhel3d0M4hhjqf5UvEwagcHgFjWb3AXeQFUvMQMt1jSR/izfayCu9gIWeZ2AWhlvEUKPxmCJqauf6sUWgJD6fJrbDshU48nnmhxo7w2eEzNyGMTZ6a8LLbncjMMcUPV8CEOB3YFYgRM2/lHtaagOl44zaJ7eza5MWa5p/DV4UG91Pev5kz5dQ4hxq+Y/WoTib/gxBkdOCbH/NEttHNpfyVt4JDkqHTmYma5ByqBW8O6JcB2EqYF6v29SplbAB9wj5+wZEO/CvVBDpfrHXthjiSu7EiY10BJ5LBlFWeoQ/RPYen5yn9vqGP3Ihs/uzMjtTb3UOfeqLWHv7doj4U/SdyPaOFuNFonnSltAElV7qEa14A165XK4d6cstwNAFAFb567xEeBXDRPrxDq94rkfCukMyIG8Qqu7YqMG3qmr3ip7ieIwFGo1JxK1i8DJwKK0rbQMO0Me0fMM="
     app: arcane-headland-21979
     on:
       branch: master
