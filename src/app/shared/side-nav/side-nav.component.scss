@@ -1,0 +1,11 @@
+@import '../../../variables';
+
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: $main-layout-left-padding;
+    padding-top: 5rem;
+    border-right: solid 1px;
+}
