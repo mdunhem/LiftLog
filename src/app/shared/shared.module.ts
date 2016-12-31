@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ConvertToWorkoutTypePipe } from './pipes/convert-to-workout-type.pipe';
 
 
 @NgModule({
@@ -11,11 +12,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     CommonModule,
     RouterModule
   ],
-  declarations: [MainLayoutComponent, SideNavComponent, NavbarComponent],
+  declarations: [MainLayoutComponent, SideNavComponent, NavbarComponent, ConvertToWorkoutTypePipe],
   exports: [
     MainLayoutComponent,
     SideNavComponent,
-    NavbarComponent
+    NavbarComponent,
+    ConvertToWorkoutTypePipe
   ]
 })
 export class SharedModule { }
