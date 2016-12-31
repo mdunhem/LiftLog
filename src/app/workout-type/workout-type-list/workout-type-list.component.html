@@ -1,3 +1,9 @@
-<p>
-  workout-type-list works!
-</p>
+<div class="row">
+  <div *ngFor="let workoutType of workoutTypes | async | convertToWorkoutType" class="col-lg">
+    <div class="card">
+      <div class="card-block">
+        <app-workout-type-detail [key]="workoutType.$key"></app-workout-type-detail>
+      </div>
+    </div>
+  </div>
+</div>

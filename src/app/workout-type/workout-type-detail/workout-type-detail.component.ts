@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-workout-type-detail',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutTypeDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() key: string;
+
+  workoutType: FirebaseObjectObservable<any>;
+  exerciseDefaults: FirebaseListObservable<any[]>;
+
+  constructor(private firebase: AngularFireDatabase) { }
 
   ngOnInit() {
+    this.workoutType = this.firebase.object('workoutTypes/' + this.key);
+    this.exerciseDefaults = this.firebase.list('exerciseDefaults');
   }
 
 }

@@ -12,7 +12,7 @@ export class TableHeadComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log('created');
+    
   }
 
 }

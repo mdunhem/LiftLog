@@ -1,3 +1,18 @@
-<p>
-  workout-type-detail works!
-</p>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label">Name</label>
+  <div class="col-sm">
+    <input type="text" class="form-control" placeholder="Name" value="{{(workoutType | async | convertToWorkoutType)?.name}}">
+  </div>
+</div>
+<div class="form-group row">
+  <label class="col-sm-4 col-form-label">Exercise Defaults</label>
+  <div class="col-sm">
+    <div class="form-check">
+      <label *ngFor="let exercise of exerciseDefaults | async" class="form-check-inline custom-control custom-checkbox">
+        <input class="custom-control-input" type="checkbox" value="{{exercise.$key}}" [checked]="(workoutType | async | convertToWorkoutType)?.exerciseDefaults.indexOf(exercise.$key) >= 0">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{exercise.name}}</span>
+      </label>
+    </div>
+  </div>
+</div>
