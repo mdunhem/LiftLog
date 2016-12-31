@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+// Export for convenience
+export { AngularFireDatabase } from 'angularfire2';
+
 @Injectable()
 export class FirebaseDatabaseStub {
   private listStubData = [
@@ -17,13 +20,3 @@ export class FirebaseDatabaseStub {
     return Observable.from(this.objectStubData);
   }
 }
-
-// @NgModule({
-//   declarations: [
-    
-//   ],
-//   exports: [
-    
-//   ]
-// })
-// export class FirebaseStubsModule { }

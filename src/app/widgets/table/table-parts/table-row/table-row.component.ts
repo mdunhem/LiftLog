@@ -12,7 +12,7 @@ export class TableRowComponent implements OnInit {
   @Input() cellContents: string[];
 
   constructor() {
-    console.log('created row');
+    
   }
 
   ngOnInit() {
