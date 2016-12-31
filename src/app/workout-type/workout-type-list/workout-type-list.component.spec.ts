@@ -4,14 +4,9 @@ import { By } from '@angular/platform-browser';
 import { DebugElement, Component, Input } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, FirebaseDatabaseStub } from '../../../testing/firebase-stubs';
+import { AngularFireDatabase, FirebaseDatabaseStub, WorkoutTypeDetailStubComponent } from '../../../testing';
 
 import { WorkoutTypeListComponent } from './workout-type-list.component';
-
-@Component({selector: 'app-workout-type-detail', template: ''})
-export class WorkoutTypeDetailStubComponent {
-  @Input() key: string;
-}
 
 describe('WorkoutTypeListComponent', () => {
   let component: WorkoutTypeListComponent;
