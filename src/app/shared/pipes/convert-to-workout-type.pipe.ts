@@ -13,9 +13,13 @@ export class ConvertToWorkoutTypePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value) {
-      value.forEach(element => {
-        element.exerciseDefaults = Object.keys(element.exerciseDefaults);
-      });
+      if (Array.isArray(value)) {
+        value.forEach(element => {
+          element.exerciseDefaults = Object.keys(element.exerciseDefaults);
+        });
+      } else {
+        value.exerciseDefaults = Object.keys(value.exerciseDefaults);
+      }
     }
 
     console.log(value);

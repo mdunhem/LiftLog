@@ -2,26 +2,7 @@
   <div *ngFor="let workoutType of workoutTypes | async | convertToWorkoutType" class="col-lg">
     <div class="card">
       <div class="card-block">
-        <form>
-          <div class="form-group row">
-            <label for="workoutType-{{workoutType.$key}}-name" class="col-sm-4 col-form-label">Name</label>
-            <div class="col-sm">
-              <input type="text" class="form-control" id="workoutType-{{workoutType.$key}}-name" placeholder="Name" value="{{workoutType.name}}">
-            </div>
-          </div>
-          <div class="form-group row">
-            <label for="workoutType-{{workoutType.$key}}-exerciseDefaults" class="col-sm-4 col-form-label">Exercise Defaults</label>
-            <div class="col-sm">
-              <div class="form-check">
-                <label *ngFor="let exercise of exerciseDefaults | async" class="form-check-inline custom-control custom-checkbox">
-                  <input class="custom-control-input" type="checkbox" id="workoutType-{{workoutType.$key}}-exerciseDefaults" value="{{exercise.$key}}" [checked]="workoutType.exerciseDefaults.indexOf(exercise.$key) >= 0">
-                  <span class="custom-control-indicator"></span>
-                  <span class="custom-control-description">{{exercise.name}}</span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </form>
+        <app-workout-type-detail [key]="workoutType.$key"></app-workout-type-detail>
       </div>
     </div>
   </div>
