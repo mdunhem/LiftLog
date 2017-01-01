@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  navItems = [
+    { name: 'Dashboard', route: 'dashboard' },
+    { name: 'Workout Types', route: 'workout-type' }
+  ]
 }

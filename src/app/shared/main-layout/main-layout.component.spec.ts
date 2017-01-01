@@ -5,8 +5,7 @@ import { DebugElement, Component } from '@angular/core';
 
 import { MainLayoutComponent } from './main-layout.component';
 
-@Component({selector: 'side-nav', template: ''})
-class SideNavStubComponent {}
+import { SideNavStubComponent, TitleBarStubComponent } from '../../../testing/testing.module';
 
 describe('MainLayoutComponent', () => {
   let component: MainLayoutComponent;
@@ -14,7 +13,7 @@ describe('MainLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainLayoutComponent, SideNavStubComponent ]
+      declarations: [ MainLayoutComponent, SideNavStubComponent, TitleBarStubComponent ]
     })
     .compileComponents();
   }));

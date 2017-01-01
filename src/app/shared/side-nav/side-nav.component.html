@@ -1,5 +1,5 @@
 <nav class="nav nav-pills nav-stacked">
-  <a *ngFor="let navItem of navItems" class="nav-link" [routerLink]="[navItem.route]" routerLinkActive="active">
+  <a *ngFor="let navItem of navItems.items" class="nav-link" [routerLink]="[navItem.route]" routerLinkActive="active">
         {{ navItem.name }}
   </a>
 </nav>

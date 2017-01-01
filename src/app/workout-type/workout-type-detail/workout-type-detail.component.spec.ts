@@ -3,6 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
+import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
+
+import { SharedModule } from '../../shared/shared.module';
+import { AngularFireDatabase, FirebaseDatabaseStub } from '../../../testing/firebase-stubs';
+
 import { WorkoutTypeDetailComponent } from './workout-type-detail.component';
 
 describe('WorkoutTypeDetailComponent', () => {
@@ -10,8 +15,16 @@ describe('WorkoutTypeDetailComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeDetailComponent>;
 
   beforeEach(async(() => {
+    let firebaseDatabaseStub = new FirebaseDatabaseStub();
+    let activatedRouteStub = new ActivatedRouteStub();
+    activatedRouteStub.testParams = { key: '' };
     TestBed.configureTestingModule({
-      declarations: [ WorkoutTypeDetailComponent ]
+      imports: [ SharedModule],
+      declarations: [ WorkoutTypeDetailComponent ],
+      providers: [
+        { provide: AngularFireDatabase, useValue: firebaseDatabaseStub },
+        { provide: ActivatedRoute, useValue: activatedRouteStub }
+      ]
     })
     .compileComponents();
   }));

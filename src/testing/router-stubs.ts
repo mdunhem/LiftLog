@@ -39,9 +39,9 @@ export class ActivatedRouteStub {
   params = this.subject.asObservable();
 
   // Test parameters
-  private _testParams: {};
+  private _testParams: { key: string };
   get testParams() { return this._testParams; }
-  set testParams(params: {}) {
+  set testParams(params: { key: string }) {
     this._testParams = params;
     this.subject.next(params);
   }

@@ -1,7 +1,10 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { DebugElement, Component, Input } from '@angular/core';
+
+import { SharedModule } from '../../shared/shared.module';
+import { AngularFireDatabase, FirebaseDatabaseStub, WorkoutTypeDetailStubComponent } from '../../../testing';
 
 import { WorkoutTypeListComponent } from './workout-type-list.component';
 
@@ -10,8 +13,13 @@ describe('WorkoutTypeListComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeListComponent>;
 
   beforeEach(async(() => {
+    let firebaseDatabaseStub = new FirebaseDatabaseStub();
     TestBed.configureTestingModule({
-      declarations: [ WorkoutTypeListComponent ]
+      imports: [ SharedModule],
+      declarations: [ WorkoutTypeListComponent, WorkoutTypeDetailStubComponent ],
+      providers: [
+        { provide: AngularFireDatabase, useValue: firebaseDatabaseStub }
+      ]
     })
     .compileComponents();
   }));

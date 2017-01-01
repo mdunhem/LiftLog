@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Params }   from '@angular/router';
+import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
   selector: 'app-workout-type-detail',
@@ -7,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkoutTypeDetailComponent implements OnInit {
 
-  constructor() { }
+  @Input() key: string;
+
+  workoutType: Observable<any>;
+  exerciseDefaults: FirebaseListObservable<any[]>;
+
+  constructor(private firebase: AngularFireDatabase, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe((params: Params) => {
+      this.workoutType = this.firebase.object('workoutTypes/' + params['key']);
+    });
+    this.exerciseDefaults = this.firebase.list('exerciseDefaults');
   }
 
 }
