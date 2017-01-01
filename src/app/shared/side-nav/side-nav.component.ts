@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+export interface NavItems {
+  items: { name: string, route: string }[];
+}
 
 @Component({
   selector: 'side-nav',
@@ -7,10 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideNavComponent implements OnInit {
 
-   navItems = [
-    { name: 'Dashboard', route: 'dashboard' },
-    { name: 'Workout Types', route: 'workout-type' }
-  ]
+   @Input() navItems: NavItems = {
+     items: [
+        { name: 'Dashboard', route: 'dashboard' },
+        { name: 'Workout Types', route: 'workout-type' }
+      ]
+   }
+    
 
   constructor() { }
 

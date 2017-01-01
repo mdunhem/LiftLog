@@ -10,10 +10,10 @@ const routes: Routes = [
       path: 'workout-type',
       component: WorkoutTypeComponent,
       children: [
-        {
-          path: '',
-          component: WorkoutTypeListComponent
-        },
+        // {
+        //   path: '',
+        //   component: WorkoutTypeListComponent
+        // },
         {
           path: ':key',
           component: WorkoutTypeDetailComponent
