@@ -6,13 +6,21 @@ export class WorkoutTypeDetailStubComponent {
   @Input() key: string;
 }
 
+@Component({selector: 'side-nav', template: ''})
+export class SideNavStubComponent {}
+
+@Component({selector: 'app-title-bar', template: ''})
+export class TitleBarStubComponent {}
+
 @NgModule({
   imports: [
     CommonModule
   ],
-  declarations: [WorkoutTypeDetailStubComponent],
+  declarations: [WorkoutTypeDetailStubComponent, SideNavStubComponent, TitleBarStubComponent],
   exports: [
-    WorkoutTypeDetailStubComponent
+    WorkoutTypeDetailStubComponent,
+    SideNavStubComponent,
+    TitleBarStubComponent
   ]
 })
 export class TestingModule { }
