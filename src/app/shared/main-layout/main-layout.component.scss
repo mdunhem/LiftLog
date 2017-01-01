@@ -1,0 +1,26 @@
+@import '../../../variables';
+// @import '~bootstrap/scss/mixins/grid';
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+}
+
+.main-layout__row {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+}
+
+.top-border {
+    border-top: solid 1px $main-layout-border-color;
+}
+
+.right-border {
+    border-right: solid 1px $main-layout-border-color;
+}
+
+.padded {
+    padding: 1rem;
+}

@@ -1,20 +1,26 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-2">
-      <div class="container-fluid">
-        <div class="row">
-          <side-nav></side-nav>
-        </div>
-      </div>
-    </div>
-    <div class="col-xs">
-      <div class="container-fluid">
-        <div class="row">
-            <main class="col-xs">
-              <ng-content></ng-content>
-            </main>
-        </div>
+<app-title-bar></app-title-bar>
+<div class="main-layout__row">
+  <div class="col-xs-3 right-border padded">
+    <side-nav></side-nav>
+  </div>
+  <main class="col-xs padded">
+    <ng-content></ng-content>
+  </main>
+</div>
+
+<!--<div class="row">
+  <div class="col-xs-2">
+    <div class="container-fluid">
+      <div class="row">
+        
       </div>
     </div>
   </div>
-</div>
+  <div class="col-xs">
+    <div class="container-fluid">
+      <div class="row">
+          
+      </div>
+    </div>
+  </div>
+</div>-->
