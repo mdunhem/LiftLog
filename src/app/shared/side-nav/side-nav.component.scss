@@ -7,5 +7,9 @@
     height: 100%;
     width: $main-layout-left-padding;
     padding-top: 5rem;
-    border-right: solid 1px;
+    border-right: solid 1px $main-layout-border-color;
+}
+
+.nav-pills .nav-link {
+    border-radius: 0;
 }
