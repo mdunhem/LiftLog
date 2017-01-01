@@ -1,19 +1,24 @@
 @import '../../../variables';
 // @import '~bootstrap/scss/mixins/grid';
 
-// :host {
-//     @include make-container();
-//     position: absolute;
-//     height: 100%;
-//     width: 100%;
-// }
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 100%;
+}
 
-// .row {
-//     height: 100%;
-// }
+.main-layout__row {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 100%;
+}
 
 .top-border {
     border-top: solid 1px $main-layout-border-color;
+}
+
+.right-border {
+    border-right: solid 1px $main-layout-border-color;
 }
 
 .padded {
