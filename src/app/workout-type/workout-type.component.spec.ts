@@ -6,9 +6,7 @@ import { DebugElement } from '@angular/core';
 import {
   AngularFireDatabase,
   FirebaseDatabaseStub,
-  SideNavStubComponent,
-  TitleBarStubComponent,
-  RouterOutletStubComponent
+  TwoColumnLayoutStubComponent
 } from '../../testing';
 
 import { WorkoutTypeComponent } from './workout-type.component';
@@ -22,9 +20,7 @@ describe('WorkoutTypeComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         WorkoutTypeComponent,
-        RouterOutletStubComponent,
-        SideNavStubComponent,
-        TitleBarStubComponent
+        TwoColumnLayoutStubComponent
       ],
       providers: [
         { provide: AngularFireDatabase, useValue: firebaseDatabaseStub }

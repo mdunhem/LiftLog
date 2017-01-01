@@ -13,6 +13,11 @@ export class SideNavStubComponent {
   @Input() navItems: NavItems;
 }
 
+@Component({selector: 'app-two-column-layout', template: ''})
+export class TwoColumnLayoutStubComponent {
+  @Input() navItems: NavItems;
+}
+
 @Component({selector: 'app-title-bar', template: ''})
 export class TitleBarStubComponent {}
 
@@ -20,11 +25,12 @@ export class TitleBarStubComponent {}
   imports: [
     CommonModule
   ],
-  declarations: [WorkoutTypeDetailStubComponent, SideNavStubComponent, TitleBarStubComponent],
+  declarations: [WorkoutTypeDetailStubComponent, SideNavStubComponent, TitleBarStubComponent, TwoColumnLayoutStubComponent],
   exports: [
     WorkoutTypeDetailStubComponent,
     SideNavStubComponent,
-    TitleBarStubComponent
+    TitleBarStubComponent,
+    TwoColumnLayoutStubComponent
   ]
 })
 export class TestingModule { }
