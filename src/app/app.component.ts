@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'app works!';
   navItems = [
-    { name: 'Workout Types', route: 'workout-type' }
+    { name: 'Workout Types', route: 'workout-type' },
+    { name: 'Exercises', route: 'exercises' }
   ]
 }
