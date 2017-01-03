@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '../shared/shared.module';
 import { ExercisesRoutingModule } from './exercises-routing.module';
@@ -10,6 +11,7 @@ import { ExerciseDetailComponent } from './exercise-detail/exercise-detail.compo
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     SharedModule,
     ExercisesRoutingModule
   ],
