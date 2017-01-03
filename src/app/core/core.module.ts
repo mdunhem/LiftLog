@@ -2,6 +2,8 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AngularFireModule, AngularFireDatabase } from 'angularfire2';
 
+import { ExerciseLiftLogFirebaseDatabaseService } from '../shared/services/exercise-lift-log-firebase-database.service';
+
 export const firebaseConfig = {
   apiKey: "AIzaSyDNB6kMSegWGaLeJhd9A-jfhc13tvD5VdE",
   authDomain: "liftlog-85f43.firebaseapp.com",
@@ -15,7 +17,7 @@ export const firebaseConfig = {
     CommonModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [ AngularFireDatabase ]
+  providers: [ AngularFireDatabase, ExerciseLiftLogFirebaseDatabaseService ]
 })
 export class CoreModule {
   constructor (@Optional() @SkipSelf() parentModule: CoreModule) {
