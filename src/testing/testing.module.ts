@@ -15,7 +15,8 @@ export class SideNavStubComponent {
 
 @Component({selector: 'app-two-column-layout', template: ''})
 export class TwoColumnLayoutStubComponent {
-  @Input() navItems: NavItems;
+  @Input() title?: string;
+  @Input() navItems?: NavItems;
 }
 
 @Component({selector: 'app-title-bar', template: ''})

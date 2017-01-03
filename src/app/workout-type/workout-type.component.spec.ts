@@ -5,7 +5,7 @@ import { DebugElement } from '@angular/core';
 
 import {
   AngularFireDatabase,
-  FirebaseDatabaseStub,
+  WorkoutTypeFirebaseDatabaseStub,
   TwoColumnLayoutStubComponent
 } from '../../testing';
 
@@ -16,14 +16,14 @@ describe('WorkoutTypeComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeComponent>;
 
   beforeEach(async(() => {
-    let firebaseDatabaseStub = new FirebaseDatabaseStub();
+    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
     TestBed.configureTestingModule({
       declarations: [
         WorkoutTypeComponent,
         TwoColumnLayoutStubComponent
       ],
       providers: [
-        { provide: AngularFireDatabase, useValue: firebaseDatabaseStub }
+        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub }
       ]
     })
     .compileComponents();

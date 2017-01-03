@@ -22,7 +22,6 @@ export class WorkoutTypeComponent implements OnInit {
     // this.workoutTypes = this.firebase.list('workoutTypes');
     this.firebase.list('workoutTypes').subscribe(value => {
       this.navItems.items = [];
-      console.log(value);
       value.forEach(element => {
         this.navItems.items.push({name: element.name, route: element.$key});
       });

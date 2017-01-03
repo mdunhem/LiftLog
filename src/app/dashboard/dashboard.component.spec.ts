@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AngularFireDatabase, FirebaseDatabaseStub } from '../../testing/firebase-stubs';
+import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../testing/firebase-stubs';
 
 import { DashboardComponent } from './dashboard.component';
 
@@ -12,11 +12,11 @@ describe('DashboardComponent', () => {
   let fixture: ComponentFixture<DashboardComponent>;
 
   beforeEach(async(() => {
-    let firebaseDatabaseStub = new FirebaseDatabaseStub();
+    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
     TestBed.configureTestingModule({
       declarations: [ DashboardComponent ],
       providers: [
-        { provide: AngularFireDatabase, useValue: firebaseDatabaseStub }
+        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub }
       ]
     })
     .compileComponents();

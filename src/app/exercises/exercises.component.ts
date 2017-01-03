@@ -20,7 +20,6 @@ export class ExercisesComponent implements OnInit {
   ngOnInit() {
     this.firebase.list('exerciseDefaults').subscribe(value => {
       this.navItems.items = [];
-      console.log(value);
       value.forEach(element => {
         this.navItems.items.push({name: element.name, route: element.$key});
       });
