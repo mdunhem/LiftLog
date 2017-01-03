@@ -10,6 +10,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 import { AppComponent } from './app.component';
 import { WorkoutTypeModule } from './workout-type/workout-type.module';
+import { ExercisesModule } from './exercises/exercises.module';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { WorkoutTypeModule } from './workout-type/workout-type.module';
     SharedModule,
     AppRoutingModule,
     DashboardModule,
-    WorkoutTypeModule
+    WorkoutTypeModule,
+    ExercisesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

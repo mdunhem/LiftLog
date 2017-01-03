@@ -5,32 +5,32 @@ import { DebugElement } from '@angular/core';
 
 import {
   AngularFireDatabase,
-  WorkoutTypeFirebaseDatabaseStub,
+  ExerciseFirebaseDatabaseStub,
   TwoColumnLayoutStubComponent
 } from '../../testing';
 
-import { WorkoutTypeComponent } from './workout-type.component';
+import { ExercisesComponent } from './exercises.component';
 
-describe('WorkoutTypeComponent', () => {
-  let component: WorkoutTypeComponent;
-  let fixture: ComponentFixture<WorkoutTypeComponent>;
+describe('ExercisesComponent', () => {
+  let component: ExercisesComponent;
+  let fixture: ComponentFixture<ExercisesComponent>;
 
   beforeEach(async(() => {
-    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
+    let exerciseFirebaseDatabaseStub = new ExerciseFirebaseDatabaseStub();
     TestBed.configureTestingModule({
       declarations: [
-        WorkoutTypeComponent,
+        ExercisesComponent,
         TwoColumnLayoutStubComponent
       ],
       providers: [
-        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub }
+        { provide: AngularFireDatabase, useValue: exerciseFirebaseDatabaseStub }
       ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WorkoutTypeComponent);
+    fixture = TestBed.createComponent(ExercisesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
