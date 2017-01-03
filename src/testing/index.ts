@@ -1,9 +1,31 @@
 import { DebugElement }           from '@angular/core';
 import { tick, ComponentFixture } from '@angular/core/testing';
 
-export * from './router-stubs';
-export * from './firebase-stubs';
-export * from './testing.module';
+export {
+  ActivatedRoute,
+  Router,
+  RouterLink,
+  RouterOutlet,
+  RouterLinkStubDirective,
+  RouterOutletStubComponent,
+  RouterStub,
+  ActivatedRouteStub,
+  RouterStubsModule
+} from './router-stubs';
+
+export {
+  WorkoutTypeFirebaseDatabaseStub,
+  ExerciseFirebaseDatabaseStub,
+  AngularFireDatabase
+} from './firebase-stubs';
+
+export {
+  WorkoutTypeDetailStubComponent,
+  SideNavStubComponent,
+  TwoColumnLayoutStubComponent,
+  TitleBarStubComponent,
+  TestingModule
+} from './testing.module';
 
 ///// Short utilities /////
 

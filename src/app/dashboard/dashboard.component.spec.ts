@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../testing/firebase-stubs';
+import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../testing';
 
 import { DashboardComponent } from './dashboard.component';
 

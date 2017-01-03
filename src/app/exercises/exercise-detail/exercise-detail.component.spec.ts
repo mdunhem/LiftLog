@@ -9,7 +9,7 @@ import { ExerciseDetailComponent } from './exercise-detail.component';
 import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, ExerciseFirebaseDatabaseStub } from '../../../testing/firebase-stubs';
+import { AngularFireDatabase, ExerciseFirebaseDatabaseStub } from '../../../testing';
 
 describe('ExerciseDetailComponent', () => {
   let component: ExerciseDetailComponent;

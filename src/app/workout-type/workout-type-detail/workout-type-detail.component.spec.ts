@@ -6,7 +6,7 @@ import { DebugElement } from '@angular/core';
 import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../../testing/firebase-stubs';
+import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../../testing';
 
 import { WorkoutTypeDetailComponent } from './workout-type-detail.component';
 
