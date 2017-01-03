@@ -1,4 +1,4 @@
 
-export abstract class FirebaseType {
+export interface FirebaseType {
     firebasePath: string;
 }
