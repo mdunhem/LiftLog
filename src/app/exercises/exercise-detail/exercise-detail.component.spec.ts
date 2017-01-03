@@ -2,27 +2,28 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { ExerciseDetailComponent } from './exercise-detail.component';
 
 import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../../testing';
+import { AngularFireDatabase, ExerciseFirebaseDatabaseStub } from '../../../testing';
 
-import { WorkoutTypeDetailComponent } from './workout-type-detail.component';
-
-describe('WorkoutTypeDetailComponent', () => {
-  let component: WorkoutTypeDetailComponent;
-  let fixture: ComponentFixture<WorkoutTypeDetailComponent>;
+describe('ExerciseDetailComponent', () => {
+  let component: ExerciseDetailComponent;
+  let fixture: ComponentFixture<ExerciseDetailComponent>;
 
   beforeEach(async(() => {
-    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
+    let exerciseFirebaseDatabaseStub = new ExerciseFirebaseDatabaseStub();
     let activatedRouteStub = new ActivatedRouteStub();
     activatedRouteStub.testParams = { key: '' };
     TestBed.configureTestingModule({
-      imports: [ SharedModule],
-      declarations: [ WorkoutTypeDetailComponent ],
+      imports: [ ReactiveFormsModule, SharedModule ],
+      declarations: [ ExerciseDetailComponent ],
       providers: [
-        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub },
+        { provide: AngularFireDatabase, useValue: exerciseFirebaseDatabaseStub },
         { provide: ActivatedRoute, useValue: activatedRouteStub }
       ]
     })
@@ -30,7 +31,7 @@ describe('WorkoutTypeDetailComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(WorkoutTypeDetailComponent);
+    fixture = TestBed.createComponent(ExerciseDetailComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

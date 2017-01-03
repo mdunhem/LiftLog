@@ -4,7 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement, Component, Input } from '@angular/core';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, FirebaseDatabaseStub, WorkoutTypeDetailStubComponent } from '../../../testing';
+import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub, WorkoutTypeDetailStubComponent } from '../../../testing';
 
 import { WorkoutTypeListComponent } from './workout-type-list.component';
 
@@ -13,12 +13,12 @@ describe('WorkoutTypeListComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeListComponent>;
 
   beforeEach(async(() => {
-    let firebaseDatabaseStub = new FirebaseDatabaseStub();
+    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
     TestBed.configureTestingModule({
       imports: [ SharedModule],
       declarations: [ WorkoutTypeListComponent, WorkoutTypeDetailStubComponent ],
       providers: [
-        { provide: AngularFireDatabase, useValue: firebaseDatabaseStub }
+        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub }
       ]
     })
     .compileComponents();
