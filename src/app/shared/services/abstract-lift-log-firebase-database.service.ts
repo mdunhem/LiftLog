@@ -24,8 +24,8 @@ export abstract class AbstractLiftLogFirebaseDatabaseService<T extends FirebaseT
     }, this));
   }
 
-  public object(): Observable<T> {
-    return this.firebase.object(this.observableType.firebasePath).lift<any, T>(new MapOperator<any, T>(value => this.map(value), this));
+  public object(key: string): Observable<T> {
+    return this.firebase.object(this.observableType.firebasePath + '/' + key).lift<any, T>(new MapOperator<any, T>(value => this.map(value), this));
   }
 
 }
