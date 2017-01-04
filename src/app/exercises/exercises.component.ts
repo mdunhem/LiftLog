@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2';
 
 import { ExerciseLiftLogFirebaseDatabaseService, Exercise } from '../shared/services';
 
@@ -27,13 +26,6 @@ export class ExercisesComponent implements OnInit {
         this.navItems.items.push({name: exercise.name, route: exercise.$key});
       });
     });
-
-    // this.firebase.list('exerciseDefaults').subscribe(value => {
-    //   this.navItems.items = [];
-    //   value.forEach(element => {
-    //     this.navItems.items.push({name: element.name, route: element.$key});
-    //   });
-    // })
   }
 
 }

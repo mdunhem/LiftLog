@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2';
+
+import { WorkoutTypeLiftLogFirebaseDatabaseService, WorkoutType } from '../shared/services';
 import { NavItems } from '../shared/side-nav/side-nav.component';
 
 @Component({
@@ -10,17 +11,15 @@ import { NavItems } from '../shared/side-nav/side-nav.component';
 export class WorkoutTypeComponent implements OnInit {
 
   title: string = 'Workout Types';
-  workoutTypes: FirebaseListObservable<any[]>;
 
   navItems: NavItems = {
     items: []
   };
 
-  constructor(private firebase: AngularFireDatabase) { }
+  constructor(private firebase: WorkoutTypeLiftLogFirebaseDatabaseService) { }
 
   ngOnInit() {
-    // this.workoutTypes = this.firebase.list('workoutTypes');
-    this.firebase.list('workoutTypes').subscribe(value => {
+    this.firebase.list().subscribe(value => {
       this.navItems.items = [];
       value.forEach(element => {
         this.navItems.items.push({name: element.name, route: element.$key});

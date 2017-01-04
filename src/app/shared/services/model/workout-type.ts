@@ -1,7 +1,7 @@
 import { FirebaseType } from './firebase-type';
 
 export class WorkoutType implements FirebaseType {
-    firebasePath: string = 'exerciseDefaults/';
+    firebasePath: string = 'workoutTypes';
     $key: string;
     name: string;
     exerciseDefaults: string[];
