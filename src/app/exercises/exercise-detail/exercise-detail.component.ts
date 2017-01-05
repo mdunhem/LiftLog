@@ -42,17 +42,6 @@ export class ExerciseDetailComponent implements OnInit {
         });
       });
     });
-    // this.route.params.subscribe((params: Params) => {
-    //   this.exercise = this.firebase.object('exerciseDefaults/' + params['key']);
-    //   this.exercise.subscribe(value => {
-    //     this.form.setValue({
-    //       name: value.name,
-    //       reps: +value.reps,
-    //       sets: Object.keys(value.sets).length,
-    //       weight: +value.weight
-    //     });
-    //   });
-    // });
   }
 
   submit() {
