@@ -49,4 +49,9 @@ export class WorkoutTypeDetailComponent implements OnInit {
     this.exerciseDefaults = this.exerciseDefaultsFirebaseService.list();
   }
 
+  submit() {
+    console.log('Submitted');
+    console.log(this.form.value);
+  }
+
 }

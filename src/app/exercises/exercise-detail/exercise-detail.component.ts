@@ -55,4 +55,8 @@ export class ExerciseDetailComponent implements OnInit {
     // });
   }
 
+  submit() {
+    console.log(this.form.value);
+  }
+
 }
