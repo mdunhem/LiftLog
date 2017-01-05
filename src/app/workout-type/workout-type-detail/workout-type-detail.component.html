@@ -9,8 +9,7 @@
     <label class="col-sm-4 col-form-label">Exercises</label>
     <div class="col-sm">
       <select multiple formControlName="exerciseDefaults" class="form-control">
-        <option value="">Select Item</option>
-        <option *ngFor="let exercise of workoutType.exerciseDefaults" [value]="exercise">{{exercise}}</option>
+        <option *ngFor="let exercise of exerciseDefaults | async" [value]="exercise.$key">{{exercise.name}}</option>
       </select>
     </div>
   </div>

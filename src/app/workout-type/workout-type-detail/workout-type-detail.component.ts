@@ -4,7 +4,12 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { Observable } from 'rxjs';
 
-import { WorkoutTypeLiftLogFirebaseDatabaseService, WorkoutType } from '../../shared/services';
+import {
+  WorkoutTypeLiftLogFirebaseDatabaseService,
+  ExerciseLiftLogFirebaseDatabaseService,
+  WorkoutType,
+  Exercise
+} from '../../shared/services';
 
 @Component({
   selector: 'app-workout-type-detail',
@@ -18,9 +23,13 @@ export class WorkoutTypeDetailComponent implements OnInit {
   @Input() key: string;
 
   workoutType: Observable<WorkoutType>;
-  // exerciseDefaults: FirebaseListObservable<any[]>;
+  exerciseDefaults: Observable<Exercise[]>;
 
-  constructor(private formBuilder: FormBuilder, private firebase: WorkoutTypeLiftLogFirebaseDatabaseService, private route: ActivatedRoute) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private workoutTypeFirebaseService: WorkoutTypeLiftLogFirebaseDatabaseService,
+    private exerciseDefaultsFirebaseService: ExerciseLiftLogFirebaseDatabaseService,
+    private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
       name: '',
       exerciseDefaults: ['']
@@ -29,7 +38,7 @@ export class WorkoutTypeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.workoutType = this.firebase.object(params['key']);
+      this.workoutType = this.workoutTypeFirebaseService.object(params['key']);
       this.workoutType.subscribe(value => {
         this.form.setValue({
           name: value.name,
@@ -37,7 +46,7 @@ export class WorkoutTypeDetailComponent implements OnInit {
         });
       });
     });
-    // this.exerciseDefaults = this.firebase.list('exerciseDefaults');
+    this.exerciseDefaults = this.exerciseDefaultsFirebaseService.list();
   }
 
 }
