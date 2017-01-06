@@ -17,9 +17,18 @@ export class ExerciseLiftLogFirebaseDatabaseService extends AbstractLiftLogFireb
     exercise.$key = value.$key;
     exercise.name = value.name;
     exercise.reps = value.reps;
-    exercise.sets = Object.keys(value.sets).length;
+    exercise.sets = value.sets;
     exercise.weight = value.weight;
     return exercise;
+  }
+
+  protected _convertToFirebaseAnyType(valueToConvert: Exercise): {} {
+    return {
+      name: valueToConvert.name,
+      reps: valueToConvert.reps,
+      sets: valueToConvert.sets,
+      weight: valueToConvert.weight
+    };
   }
 
 }

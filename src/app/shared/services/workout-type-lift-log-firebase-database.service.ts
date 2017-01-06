@@ -13,11 +13,20 @@ export class WorkoutTypeLiftLogFirebaseDatabaseService extends AbstractLiftLogFi
   }
 
   protected map(value: any): WorkoutType {
-    const workoutType = new WorkoutType();
-    workoutType.$key = value.$key;
-    workoutType.name = value.name;
-    workoutType.exerciseDefaults = Object.keys(value.exerciseDefaults);
+    const workoutType = new WorkoutType(value);
+    // workoutType.$key = value.$key;
+    // workoutType.name = value.name;
+    // console.log(value.exerciseDefaults);
+    // workoutType.exerciseDefaults = value.exerciseDefaults;
     return workoutType;
+  }
+
+  protected _convertToFirebaseAnyType(valueToConvert: WorkoutType): {} {
+    return valueToConvert.saveableValue();
+    // return {
+    //   name: valueToConvert.name,
+    //   exerciseDefaults: valueToConvert.exerciseDefaults
+    // };
   }
 
 }

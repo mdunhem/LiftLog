@@ -37,7 +37,7 @@ export class ExerciseDetailComponent implements OnInit {
         this.form.setValue({
           name: value.name,
           reps: value.reps,
-          sets: value.sets,
+          sets: value.sets.size,
           weight: value.weight
         });
       });

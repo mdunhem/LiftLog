@@ -5,6 +5,6 @@ export class Exercise implements FirebaseType {
     $key: string;
     name: string;
     reps: number;
-    sets: number;
+    sets: Map<number, boolean>;
     weight: number;
 }

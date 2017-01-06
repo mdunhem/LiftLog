@@ -18,11 +18,13 @@ import {
 })
 export class WorkoutTypeDetailComponent implements OnInit {
 
+  private workoutType: WorkoutType;
+
   form: FormGroup;
 
   @Input() key: string;
 
-  workoutType: Observable<WorkoutType>;
+  workoutTypeObservable: Observable<WorkoutType>;
   exerciseDefaults: Observable<Exercise[]>;
 
   constructor(
@@ -38,11 +40,12 @@ export class WorkoutTypeDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.workoutType = this.workoutTypeFirebaseService.object(params['key']);
-      this.workoutType.subscribe(value => {
+      this.workoutTypeObservable = this.workoutTypeFirebaseService.object(params['key']);
+      this.workoutTypeObservable.subscribe(value => {
+        this.workoutType = value;
         this.form.setValue({
-          name: value.name,
-          exerciseDefaults: value.exerciseDefaults
+          name: this.workoutType.name,
+          exerciseDefaults: this.workoutType.keys
         });
       });
     });
@@ -50,8 +53,9 @@ export class WorkoutTypeDetailComponent implements OnInit {
   }
 
   submit() {
-    console.log('Submitted');
-    console.log(this.form.value);
+    this.workoutType.name = this.form.value.name;
+    this.workoutType.keys = this.form.value.exerciseDefaults;
+    this.workoutTypeFirebaseService.updateList(this.workoutType);
   }
 
 }
