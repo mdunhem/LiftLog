@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2';
+import { database } from 'firebase';
 
 import { AbstractLiftLogFirebaseDatabaseService } from './abstract-lift-log-firebase-database.service';
 import { Exercise } from './model/exercise';
@@ -13,22 +14,12 @@ export class ExerciseLiftLogFirebaseDatabaseService extends AbstractLiftLogFireb
   }
 
   protected map(value: any): Exercise {
-    const exercise = new Exercise();
-    exercise.$key = value.$key;
-    exercise.name = value.name;
-    exercise.reps = value.reps;
-    exercise.sets = value.sets;
-    exercise.weight = value.weight;
+    const exercise = new Exercise(value);
     return exercise;
   }
 
   protected _convertToFirebaseAnyType(valueToConvert: Exercise): {} {
-    return {
-      name: valueToConvert.name,
-      reps: valueToConvert.reps,
-      sets: valueToConvert.sets,
-      weight: valueToConvert.weight
-    };
+    return valueToConvert.saveableValue();
   }
 
 }

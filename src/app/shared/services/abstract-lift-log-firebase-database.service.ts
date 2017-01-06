@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
+import * as firebase from 'firebase';
 import { Observable } from 'rxjs';
 import { map, MapOperator } from 'rxjs/operator/map';
 
@@ -29,7 +30,10 @@ export abstract class AbstractLiftLogFirebaseDatabaseService<T extends FirebaseT
     return this.firebaseListObservable;
   }
 
-  public object(key: string): FirebaseObjectObservable<T> {
+  public object(key?: string): FirebaseObjectObservable<T> {
+    if (!key) {
+      key = firebase.database().ref().child(this.observableType.firebasePath).push().key;
+    }
     this.firebaseObjectObservable = <FirebaseObjectObservable<T>>this.firebase.object(this.observableType.firebasePath + '/' + key)
       .lift<any, T>(new MapOperator<any, T>(value => this.map(value), this));
     return this.firebaseObjectObservable;

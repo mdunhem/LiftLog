@@ -16,7 +16,6 @@ export class WorkoutType implements FirebaseType {
 
     get keys(): string[] {
         const keys: string[] = [];
-        // console.log(this);
         // this.exerciseDefaults.forEach((value: boolean, key: string) => keys.push(key));
         for (const key of Object.keys(this.exerciseDefaults)) {
             console.log(key);
@@ -27,9 +26,6 @@ export class WorkoutType implements FirebaseType {
     set keys(newKeys: string[]) {
         const exerciseDefaults: Map<string, boolean> = new Map<string, boolean>();
         newKeys.forEach((value: string, index: number) => exerciseDefaults.set(value, true));
-        // for (const key of newKeys) {
-        //     exerciseDefaults.set(key, true);
-        // }
         this.exerciseDefaults = exerciseDefaults;
     }
 

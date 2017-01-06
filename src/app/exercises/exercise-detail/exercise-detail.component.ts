@@ -19,7 +19,8 @@ export class ExerciseDetailComponent implements OnInit {
 
   @Input() key: string;
 
-  exercise: Observable<Exercise>;
+  private _exerciseObservable: Observable<Exercise>;
+  private _exercise: Exercise;
 
   constructor(private formBuilder: FormBuilder, private firebase: ExerciseLiftLogFirebaseDatabaseService, private route: ActivatedRoute) {
     this.form = this.formBuilder.group({
@@ -32,12 +33,13 @@ export class ExerciseDetailComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.exercise = this.firebase.object(params['key']);
-      this.exercise.subscribe(value => {
+      this._exerciseObservable = this.firebase.object(params['key']);
+      this._exerciseObservable.subscribe(value => {
+        this._exercise = value;
         this.form.setValue({
           name: value.name,
           reps: value.reps,
-          sets: value.sets.size,
+          sets: value.sets,
           weight: value.weight
         });
       });
@@ -45,7 +47,11 @@ export class ExerciseDetailComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value);
+    this._exercise.name = this.form.value.name;
+    this._exercise.reps = this.form.value.reps;
+    this._exercise.sets = this.form.value.sets;
+    this._exercise.weight = this.form.value.weight;
+    this.firebase.updateList(this._exercise);
   }
 
 }
