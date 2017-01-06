@@ -5,3 +5,9 @@ export interface FirebaseType {
 
     saveableValue(): any;
 }
+
+export interface FirebaseAnyType {
+    $key: string;
+    $exists: Function;
+    [propName: string]: any;
+}

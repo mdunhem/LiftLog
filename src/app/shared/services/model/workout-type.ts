@@ -7,6 +7,7 @@ export class WorkoutType implements FirebaseType {
     private _exerciseDefaults: Map<string, boolean>;
 
     constructor(firebaseAnyType: any = null) {
+        console.log(firebaseAnyType);
         if (firebaseAnyType) {
             this.$key = firebaseAnyType.$key;
             if (firebaseAnyType.name) {

@@ -5,10 +5,11 @@ export class Exercise implements FirebaseType {
     $key: string = '';
     name: string = '';
     reps: number = 0;
-    _sets: Map<number, boolean>;
+    private _sets: Map<number, boolean>;
     weight: number = 0;
 
     constructor(firebaseAnyType: any = null) {
+        console.log(firebaseAnyType);
         if (firebaseAnyType) {
             this.$key = firebaseAnyType.$key;
             if (firebaseAnyType.name) {
