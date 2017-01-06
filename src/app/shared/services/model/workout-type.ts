@@ -2,36 +2,40 @@ import { FirebaseType } from './firebase-type';
 
 export class WorkoutType implements FirebaseType {
     firebasePath: string = 'workoutTypes';
-    $key: string;
-    name: string;
-    exerciseDefaults: Map<string, boolean>;
+    $key: string = '';
+    name: string = '';
+    private _exerciseDefaults: Map<string, boolean>;
 
     constructor(firebaseAnyType: any = null) {
         if (firebaseAnyType) {
             this.$key = firebaseAnyType.$key;
-            this.name = firebaseAnyType.name;
-            this.exerciseDefaults = <Map<string, boolean>>firebaseAnyType.exerciseDefaults;
+            if (firebaseAnyType.name) {
+                this.name = firebaseAnyType.name;
+            }
+            this._exerciseDefaults = new Map<string, boolean>();
+            if (firebaseAnyType.exerciseDefaults) {
+                for (const key of Object.keys(firebaseAnyType.exerciseDefaults)) {
+                    this._exerciseDefaults.set(key, firebaseAnyType.exerciseDefaults[key]);
+                }
+            }
         }
     }
 
-    get keys(): string[] {
+    get exerciseDefaults(): string[] {
         const keys: string[] = [];
-        // this.exerciseDefaults.forEach((value: boolean, key: string) => keys.push(key));
-        for (const key of Object.keys(this.exerciseDefaults)) {
-            console.log(key);
-            keys.push(key);
-        }
+        this._exerciseDefaults.forEach((value: boolean, key: string) => keys.push(key));
         return keys;
     }
-    set keys(newKeys: string[]) {
+
+    set exerciseDefaults(newValue: string[]) {
         const exerciseDefaults: Map<string, boolean> = new Map<string, boolean>();
-        newKeys.forEach((value: string, index: number) => exerciseDefaults.set(value, true));
-        this.exerciseDefaults = exerciseDefaults;
+        newValue.forEach((value: string, index: number) => exerciseDefaults.set(value, true));
+        this._exerciseDefaults = exerciseDefaults;
     }
 
     saveableValue(): { name: string, exerciseDefaults: Object } {
         const exerciseDefaults = {};
-        this.exerciseDefaults.forEach((value: boolean, key: string) => {
+        this._exerciseDefaults.forEach((value: boolean, key: string) => {
             exerciseDefaults[key] = value;
         });
         return { name: this.name, exerciseDefaults: exerciseDefaults };

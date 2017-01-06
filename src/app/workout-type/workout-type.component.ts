@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { WorkoutTypeLiftLogFirebaseDatabaseService, WorkoutType } from '../shared/services';
 import { NavItems } from '../shared/side-nav/side-nav.component';
@@ -16,7 +17,7 @@ export class WorkoutTypeComponent implements OnInit {
     items: []
   };
 
-  constructor(private firebase: WorkoutTypeLiftLogFirebaseDatabaseService) { }
+  constructor(private firebase: WorkoutTypeLiftLogFirebaseDatabaseService, private router: Router) { }
 
   ngOnInit() {
     this.firebase.list().subscribe(value => {
@@ -25,6 +26,12 @@ export class WorkoutTypeComponent implements OnInit {
         this.navItems.items.push({name: element.name, route: element.$key});
       });
     })
+  }
+
+  newWorkoutType() {
+    this.firebase.object().subscribe(workoutType => {
+      this.router.navigate(['workout-type', workoutType.$key]);
+    });
   }
 
 }

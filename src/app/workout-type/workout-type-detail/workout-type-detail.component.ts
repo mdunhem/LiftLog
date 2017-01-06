@@ -45,7 +45,7 @@ export class WorkoutTypeDetailComponent implements OnInit {
         this.workoutType = value;
         this.form.setValue({
           name: this.workoutType.name,
-          exerciseDefaults: this.workoutType.keys
+          exerciseDefaults: this.workoutType.exerciseDefaults
         });
       });
     });
@@ -54,7 +54,7 @@ export class WorkoutTypeDetailComponent implements OnInit {
 
   submit() {
     this.workoutType.name = this.form.value.name;
-    this.workoutType.keys = this.form.value.exerciseDefaults;
+    this.workoutType.exerciseDefaults = this.form.value.exerciseDefaults;
     this.workoutTypeFirebaseService.updateList(this.workoutType);
   }
 

@@ -32,7 +32,7 @@ export class ExercisesComponent implements OnInit {
   newExercise() {
     this.firebase.object().subscribe(exercise => {
       this.router.navigate(['exercises', exercise.$key]);
-    })
+    });
   }
 
 }
