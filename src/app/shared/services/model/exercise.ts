@@ -9,7 +9,6 @@ export class Exercise implements FirebaseType {
     weight: number = 0;
 
     constructor(firebaseAnyType: any = null) {
-        console.log(firebaseAnyType);
         if (firebaseAnyType) {
             this.$key = firebaseAnyType.$key;
             if (firebaseAnyType.name) {
