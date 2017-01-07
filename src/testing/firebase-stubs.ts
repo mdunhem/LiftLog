@@ -26,7 +26,7 @@ export class TestWorkoutTypeLiftLogFirebaseDatabaseService extends TestAbstractL
   protected listStubData: WorkoutType[][] = [
     [new WorkoutType({ 'name': 'test1', exerciseDefaults: ['one'], $key: 'one' })]
   ];
-  protected objectStubData: WorkoutType[];
+  protected objectStubData: WorkoutType[] = [new WorkoutType({ 'name': 'test1', exerciseDefaults: ['one'], $key: 'one' })];
 }
 
 @Injectable()
