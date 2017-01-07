@@ -9,6 +9,7 @@ export class AppComponent {
   title = 'app works!';
   navItems = [
     { name: 'Workout Types', route: 'workout-type' },
-    { name: 'Exercises', route: 'exercises' }
+    { name: 'Exercises', route: 'exercises' },
+    { name: 'Login', route: 'login'}
   ]
 }
