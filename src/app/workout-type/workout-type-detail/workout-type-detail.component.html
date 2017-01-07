@@ -1,4 +1,25 @@
-<div class="form-group row">
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">Name</label>
+    <div class="col-sm">
+      <input formControlName="name" type="text" class="form-control" placeholder="Name">
+    </div>
+  </div>
+  <div class="form-group row">
+    <label class="col-sm-4 col-form-label">Exercises</label>
+    <div class="col-sm">
+      <select multiple formControlName="exerciseDefaults" class="form-control">
+        <option *ngFor="let exercise of exerciseDefaults | async" [value]="exercise.$key">{{exercise.name}}</option>
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-outline-primary">Save</button>
+</form>
+<p>
+  Form: {{ form.value | json }}
+</p>
+
+<!--<div class="form-group row">
   <label class="col-sm-4 col-form-label">Name</label>
   <div class="col-sm">
     <input type="text" class="form-control" placeholder="Name" value="{{(workoutType | async | convertToWorkoutType)?.name}}">
@@ -15,4 +36,4 @@
       </label>
     </div>
   </div>
-</div>
+</div>-->

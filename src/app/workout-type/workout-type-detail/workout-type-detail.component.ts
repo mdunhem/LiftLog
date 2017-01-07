@@ -1,8 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
-import { AngularFireDatabase, FirebaseObjectObservable, FirebaseListObservable } from 'angularfire2';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+
 import { Observable } from 'rxjs';
-import 'rxjs/add/operator/switchMap';
+
+import {
+  WorkoutTypeLiftLogFirebaseDatabaseService,
+  ExerciseLiftLogFirebaseDatabaseService,
+  WorkoutType,
+  Exercise
+} from '../../shared/services';
 
 @Component({
   selector: 'app-workout-type-detail',
@@ -11,18 +18,44 @@ import 'rxjs/add/operator/switchMap';
 })
 export class WorkoutTypeDetailComponent implements OnInit {
 
+  private workoutType: WorkoutType;
+
+  form: FormGroup;
+
   @Input() key: string;
 
-  workoutType: Observable<any>;
-  exerciseDefaults: FirebaseListObservable<any[]>;
+  workoutTypeObservable: Observable<WorkoutType>;
+  exerciseDefaults: Observable<Exercise[]>;
 
-  constructor(private firebase: AngularFireDatabase, private route: ActivatedRoute) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private workoutTypeFirebaseService: WorkoutTypeLiftLogFirebaseDatabaseService,
+    private exerciseDefaultsFirebaseService: ExerciseLiftLogFirebaseDatabaseService,
+    private route: ActivatedRoute) {
+    this.form = this.formBuilder.group({
+      name: '',
+      exerciseDefaults: ['']
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.workoutType = this.firebase.object('workoutTypes/' + params['key']);
+      this.workoutTypeObservable = this.workoutTypeFirebaseService.object(params['key']);
+      this.workoutTypeObservable.subscribe(value => {
+        this.workoutType = value;
+        this.form.setValue({
+          name: this.workoutType.name,
+          exerciseDefaults: this.workoutType.exerciseDefaults
+        });
+      });
     });
-    this.exerciseDefaults = this.firebase.list('exerciseDefaults');
+    this.exerciseDefaults = this.exerciseDefaultsFirebaseService.list();
+  }
+
+  submit() {
+    this.workoutType.name = this.form.value.name;
+    this.workoutType.exerciseDefaults = this.form.value.exerciseDefaults;
+    this.workoutTypeFirebaseService.updateList(this.workoutType);
   }
 
 }

@@ -2,13 +2,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-
-import {
-  AngularFireDatabase,
-  WorkoutTypeFirebaseDatabaseStub,
-  TwoColumnLayoutStubComponent
-} from '../../testing';
-
+import { Router } from '@angular/router';
+import { RouterStub, TestWorkoutTypeLiftLogFirebaseDatabaseService, TwoColumnLayoutStubComponent } from '../../testing';
+import { WorkoutTypeLiftLogFirebaseDatabaseService } from '../shared';
 import { WorkoutTypeComponent } from './workout-type.component';
 
 describe('WorkoutTypeComponent', () => {
@@ -16,14 +12,14 @@ describe('WorkoutTypeComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeComponent>;
 
   beforeEach(async(() => {
-    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
     TestBed.configureTestingModule({
       declarations: [
         WorkoutTypeComponent,
         TwoColumnLayoutStubComponent
       ],
       providers: [
-        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub }
+        { provide: WorkoutTypeLiftLogFirebaseDatabaseService, useClass: TestWorkoutTypeLiftLogFirebaseDatabaseService },
+        { provide: Router, useClass: RouterStub }
       ]
     })
     .compileComponents();
