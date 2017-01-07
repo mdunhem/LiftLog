@@ -2,7 +2,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
-import { AngularFireDatabase, TwoColumnLayoutStubComponent } from '../../testing';
+import { Router } from '@angular/router';
+import { RouterStub, TestExerciseLiftLogFirebaseDatabaseService, TwoColumnLayoutStubComponent } from '../../testing';
 import { ExerciseLiftLogFirebaseDatabaseService } from '../shared';
 import { ExercisesComponent } from './exercises.component';
 
@@ -17,8 +18,8 @@ describe('ExercisesComponent', () => {
         TwoColumnLayoutStubComponent
       ],
       providers: [
-        AngularFireDatabase,
-        ExerciseLiftLogFirebaseDatabaseService
+        { provide: ExerciseLiftLogFirebaseDatabaseService, useClass: TestExerciseLiftLogFirebaseDatabaseService },
+        { provide: Router, useClass: RouterStub }
       ]
     })
     .compileComponents();
