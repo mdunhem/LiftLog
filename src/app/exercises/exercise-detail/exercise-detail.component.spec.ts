@@ -9,21 +9,20 @@ import { ExerciseDetailComponent } from './exercise-detail.component';
 import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
 
 import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, ExerciseFirebaseDatabaseStub } from '../../../testing';
+import { ExerciseLiftLogFirebaseDatabaseService } from '../../shared'; // Need to change this to a testing stub
 
 describe('ExerciseDetailComponent', () => {
   let component: ExerciseDetailComponent;
   let fixture: ComponentFixture<ExerciseDetailComponent>;
 
   beforeEach(async(() => {
-    let exerciseFirebaseDatabaseStub = new ExerciseFirebaseDatabaseStub();
     let activatedRouteStub = new ActivatedRouteStub();
     activatedRouteStub.testParams = { key: '' };
     TestBed.configureTestingModule({
       imports: [ ReactiveFormsModule, SharedModule ],
       declarations: [ ExerciseDetailComponent ],
       providers: [
-        { provide: AngularFireDatabase, useValue: exerciseFirebaseDatabaseStub },
+        ExerciseLiftLogFirebaseDatabaseService,
         { provide: ActivatedRoute, useValue: activatedRouteStub }
       ]
     })
