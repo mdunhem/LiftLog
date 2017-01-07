@@ -1,8 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { FirebaseType, WorkoutType, Exercise } from '../app/shared';
 
 // Export for convenience
 export { AngularFireDatabase } from 'angularfire2';
+
+abstract class TestAbstractLiftLogFirebaseDatabaseService<T extends FirebaseType> {
+
+}
+
+@Injectable()
+export class TestWorkoutTypeLiftLogFirebaseDatabaseService extends TestAbstractLiftLogFirebaseDatabaseService<WorkoutType> {
+
+}
+
+@Injectable()
+export class TestExerciseLiftLogFirebaseDatabaseService extends TestAbstractLiftLogFirebaseDatabaseService<Exercise> {
+
+}
 
 @Injectable()
 export class WorkoutTypeFirebaseDatabaseStub {
