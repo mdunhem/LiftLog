@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ConvertToWorkoutTypePipe } from './pipes/convert-to-workout-type.pipe';
 import { TitleBarComponent } from './title-bar/title-bar.component';
 import { TwoColumnLayoutComponent } from './two-column-layout/two-column-layout.component';
+import { ExerciseLiftLogFirebaseDatabaseService, WorkoutTypeLiftLogFirebaseDatabaseService } from './services';
 
 
 @NgModule({
@@ -14,7 +15,14 @@ import { TwoColumnLayoutComponent } from './two-column-layout/two-column-layout.
     CommonModule,
     RouterModule
   ],
-  declarations: [MainLayoutComponent, SideNavComponent, NavbarComponent, ConvertToWorkoutTypePipe, TitleBarComponent, TwoColumnLayoutComponent],
+  declarations: [
+    MainLayoutComponent,
+    SideNavComponent,
+    NavbarComponent,
+    ConvertToWorkoutTypePipe,
+    TitleBarComponent,
+    TwoColumnLayoutComponent
+  ],
   exports: [
     MainLayoutComponent,
     SideNavComponent,

@@ -2,11 +2,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { ReactiveFormsModule, FormBuilder } from '@angular/forms';
 
 import { ActivatedRouteStub, ActivatedRoute } from '../../../testing/router-stubs';
 
-import { SharedModule } from '../../shared/shared.module';
-import { AngularFireDatabase, WorkoutTypeFirebaseDatabaseStub } from '../../../testing';
+import { ExerciseLiftLogFirebaseDatabaseService, WorkoutTypeLiftLogFirebaseDatabaseService } from '../../shared';
+import { TestExerciseLiftLogFirebaseDatabaseService, TestWorkoutTypeLiftLogFirebaseDatabaseService } from '../../../testing';
 
 import { WorkoutTypeDetailComponent } from './workout-type-detail.component';
 
@@ -15,14 +16,15 @@ describe('WorkoutTypeDetailComponent', () => {
   let fixture: ComponentFixture<WorkoutTypeDetailComponent>;
 
   beforeEach(async(() => {
-    let workoutTypeFirebaseDatabaseStub = new WorkoutTypeFirebaseDatabaseStub();
     let activatedRouteStub = new ActivatedRouteStub();
-    activatedRouteStub.testParams = { key: '' };
+    activatedRouteStub.testParams = { key: '1' };
     TestBed.configureTestingModule({
-      imports: [ SharedModule],
+      imports: [ ReactiveFormsModule ],
       declarations: [ WorkoutTypeDetailComponent ],
       providers: [
-        { provide: AngularFireDatabase, useValue: workoutTypeFirebaseDatabaseStub },
+        FormBuilder,
+        { provide: WorkoutTypeLiftLogFirebaseDatabaseService, useClass: TestWorkoutTypeLiftLogFirebaseDatabaseService },
+        { provide: ExerciseLiftLogFirebaseDatabaseService, useClass: TestExerciseLiftLogFirebaseDatabaseService },
         { provide: ActivatedRoute, useValue: activatedRouteStub }
       ]
     })

@@ -16,7 +16,9 @@ export {
 export {
   WorkoutTypeFirebaseDatabaseStub,
   ExerciseFirebaseDatabaseStub,
-  AngularFireDatabase
+  AngularFireDatabase,
+  TestWorkoutTypeLiftLogFirebaseDatabaseService,
+  TestExerciseLiftLogFirebaseDatabaseService
 } from './firebase-stubs';
 
 export {

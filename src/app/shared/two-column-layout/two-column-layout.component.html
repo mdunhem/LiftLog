@@ -1,4 +1,6 @@
-<app-title-bar [title]="title"></app-title-bar>
+<app-title-bar [title]="title">
+  <ng-content></ng-content>
+</app-title-bar>
 <div class="two-column-layout__row">
   <div class="col-xs-3 two-column-layout--right-border two-column-layout--padded">
     <side-nav [navItems]="navItems"></side-nav>
