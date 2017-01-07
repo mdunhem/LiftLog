@@ -6,7 +6,7 @@ import { FirebaseType, WorkoutType, Exercise } from '../app/shared';
 export { AngularFireDatabase } from 'angularfire2';
 
 @Injectable()
-abstract class TestAbstractLiftLogFirebaseDatabaseService<T extends FirebaseType> {
+export abstract class TestAbstractLiftLogFirebaseDatabaseService<T extends FirebaseType> {
 
   protected abstract listStubData: T[][];
   protected abstract objectStubData: T[];
