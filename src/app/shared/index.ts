@@ -5,3 +5,4 @@ export * from './main-layout/main-layout.component';
 export * from './navbar/navbar.component';
 export * from './two-column-layout/two-column-layout.component';
 export { ExerciseLiftLogFirebaseDatabaseService, WorkoutTypeLiftLogFirebaseDatabaseService, WorkoutType, Exercise, FirebaseType } from './services';
+export { AuthModule, AuthService, AuthGuardService } from './auth';
