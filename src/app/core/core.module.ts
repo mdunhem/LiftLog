@@ -1,6 +1,6 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AngularFireModule, AngularFireDatabase } from 'angularfire2';
+import { AngularFireModule, AngularFireDatabase, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { ExerciseLiftLogFirebaseDatabaseService, WorkoutTypeLiftLogFirebaseDatabaseService } from '../shared/services';
 
@@ -12,10 +12,15 @@ export const firebaseConfig = {
   messagingSenderId: "401385670505"
 };
 
+export const firebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+};
+
 @NgModule({
   imports: [
     CommonModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   providers: [
     AngularFireDatabase,
