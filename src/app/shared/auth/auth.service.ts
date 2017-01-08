@@ -1,35 +1,49 @@
 import { Injectable } from '@angular/core';
-import { AngularFire } from 'angularfire2';
-import { Observable } from 'rxjs/Observable';
+import { AngularFire, FirebaseAuthState } from 'angularfire2';
+import { Observable, Subject } from 'rxjs';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/delay';
 
+export { FirebaseAuthState } from 'angularfire2';
+
 @Injectable()
 export class AuthService {
 
-  constructor(private firebase: AngularFire) { }
-
-  isLoggedIn: boolean = false;
-
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
-
-  login(email: string, password: string): firebase.Promise<any> {
-    return this.firebase.auth.login({ email: email, password: password });
-    // firebase.auth().signInWithEmailAndPassword(email, password)
-    //   .catch(error => {
-    //     console.error(error.message);
-    //   })
-    //   .then(value => {
-    //     console.log(value);
-    //   });
-    
-    // return firebase.auth().signInWithEmailAndPassword(email, password);
-    // return Observable.of(true).delay(1000).do(val => this.isLoggedIn = true);
+  constructor(private firebase: AngularFire) {
+    this.firebase.auth.subscribe(authState => {
+      this._authState = authState
+      this._loggedIn = true;
+    });
   }
 
-  logout(): void {
-    this.isLoggedIn = false;
+  private _authState : FirebaseAuthState;
+  public get authState() : Observable<FirebaseAuthState> {
+    return Observable.of(this._authState);
+  }
+  
+  private _loggedIn : boolean = false;
+  public get loggedIn() : boolean {
+    return this._loggedIn;
+  }
+
+  
+  private _error = new Subject<Error>();
+  public get error() : Observable<Error> {
+    return this._error;
+  }
+
+  // store the URL so we can redirect after logging in
+  public redirectUrl: string;
+
+  public login(email: string, password: string): Observable<boolean> {
+    this.firebase.auth.login({ email: email, password: password })
+      .catch(error => this._error.next(error));
+    
+    return Observable.of(this.loggedIn);
+  }
+
+  public logout(): void {
+    
   }
 }
