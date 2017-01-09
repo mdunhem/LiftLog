@@ -55,7 +55,13 @@ export class LoginComponent {
     //   // }
     // });
     this.authService.error.subscribe(error => this.message = error.message);
-    this.authService.authState.subscribe(authState => this.setMessage(authState));
+    this.authService.authState.subscribe(authState => {
+      this.setMessage(authState);
+      console.log(authState);
+      console.log(this.authService);
+      let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/';
+      this.router.navigate([redirect]);
+    });
   }
 
   logout() {

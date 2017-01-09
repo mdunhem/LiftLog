@@ -20,7 +20,8 @@
       <input type="checkbox" value="remember-me"> Remember me
     </label>
   </div>
-  <button type="button" (click)="login()" class="btn btn-outline-primary">Sign in</button>
+  <button type="button" (click)="login()" class="btn btn-outline-primary" *ngIf="!authService.loggedIn">Sign in</button>
+  <button type="button" (click)="logout()" class="btn btn-outline-primary" *ngIf="authService.loggedIn">Log out</button>
 </form>
 <p>{{message}}</p>
 <p>

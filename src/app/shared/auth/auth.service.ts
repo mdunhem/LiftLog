@@ -12,14 +12,20 @@ export class AuthService {
 
   constructor(private firebase: AngularFire) {
     this.firebase.auth.subscribe(authState => {
-      this._authState = authState
-      this._loggedIn = true;
+      this._authState.next(authState);
+    });
+    this.authState.subscribe(authState => {
+      if (authState) {
+        this._loggedIn = true;
+      } else {
+        this._loggedIn = false;
+      }
     });
   }
 
-  private _authState : FirebaseAuthState;
+  private _authState = new Subject<FirebaseAuthState>();
   public get authState() : Observable<FirebaseAuthState> {
-    return Observable.of(this._authState);
+    return this._authState.asObservable();
   }
   
   private _loggedIn : boolean = false;
@@ -44,6 +50,6 @@ export class AuthService {
   }
 
   public logout(): void {
-    
+    this.firebase.auth.logout();
   }
 }
